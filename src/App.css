@@ -49,7 +49,14 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+
 }
+
+.cbx span:last-child {
+  min-width: 90%;
+  overflow-wrap: break-word;
+}
+
 
 .cbx span {
   display: inline-block;
@@ -128,4 +135,3 @@
   transition: all .3s ease;
   text-decoration: line-through;
 }
-
