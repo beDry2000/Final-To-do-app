@@ -32,7 +32,7 @@ const AddToDo = () => {
     }
 
     return (
-        <div className='mt-4 flex items-end gap-4 min-h-20 px-6 my-1'>
+        <div className='mt-4 flex items-end gap-4 min-h-20 px-6 mt-1 mb-5'>
             <svg
                 className='cursor-pointer'
                 width="26" height="26" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
