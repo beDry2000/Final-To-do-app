@@ -23,7 +23,7 @@ const Calendar = () => {
             <span className="top">
                 {monthName}
             </span>
-            <span class="bottom">{dd}</span>
+            <span className="bottom">{dd}</span>
         </div>
     )
 }

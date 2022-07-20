@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import useListContext from '../../context/hooks';
 import { setJob, addJob } from '../reducer/actions';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 
 
@@ -11,9 +12,18 @@ const AddToDo = () => {
     const [hideInput, setHideInput] = useState(true);
     const [state, dispatch] = useListContext();
     const { todoInput } = state;
-    const handleInput= () => {
+    const handleInput = () => {
         setHideInput(!hideInput);
     }
+    const inputRef = useRef();
+    const [disable, setDisable] = useState(true);
+
+    // const len = inputRef.current.value.length || 0;
+    useEffect(() => {
+
+        setDisable(todoInput.length > 0 ? false : true)
+        // console.log('Dang chay useEffect', todoInput.length);
+    }, [todoInput])
     const handleAdd = () => {
         if (todoInput.length > 0) {
             dispatch(addJob(todoInput));
@@ -33,7 +43,7 @@ const AddToDo = () => {
                 <rect x="3.19998" y="6.39999" width="0.8" height="5.6" rx="0.4" transform="rotate(-90 3.19998 6.39999)" fill="#3c53c7" />
             </svg>
             {hideInput
-                ? <div className='inline-block'>Create New Item</div>
+                ? <div className='inline-block' onClick={handleInput}>Create New Item</div>
                 : (
                     <>
                         <Box
@@ -46,6 +56,7 @@ const AddToDo = () => {
                             autoComplete="off"
                         >
                             <TextField
+                                inputProps={{ ref: inputRef }}
                                 autoFocus
                                 label="Create New Item"
                                 variant="standard"
@@ -54,8 +65,7 @@ const AddToDo = () => {
                                 color="primary"
                             />
                         </Box>
-
-                        <button onClick={e => handleAdd(e)}>Add</button>
+                        <Button variant='contained' disabled={disable} onClick={e => handleAdd(e)}>ADD</Button>
 
                     </>
                 )

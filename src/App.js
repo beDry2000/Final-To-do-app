@@ -1,11 +1,15 @@
 import Home from './component/Home';
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import useListContext from './context/hooks';
 import { fetchJob } from './component/reducer/actions';
 
+import { useLoad } from './context/hooks';
+
 function App() {
-  const [,dispatch] = useListContext();
+  const {loading, handleLoad} = useLoad();
+  // const [load, setLoad] = useState(true);
+  const [, dispatch] = useListContext();
   useEffect(() => {
     fetch("https://dummyjson.com/todos")
       .then(response => response.json())
@@ -19,12 +23,23 @@ function App() {
             removed: false
           }))
         );
-          dispatch(fetchJob(todos));
+        dispatch(fetchJob(todos));
+        // setLoad(false);
+        handleLoad(false);
       })
   }, []);
-  
+
   return (
     <>
+      {/* <Backdrop
+        sx={{
+          color: '#fff',
+          zIndex: (theme) => theme.zIndex.drawer + 1
+        }}
+        open={load}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop> */}
       <Home />
     </>
   );

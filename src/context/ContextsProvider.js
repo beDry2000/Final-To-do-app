@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import reducer from "../component/reducer/reducer";
 // Selected list context
 // const SelectContext = createContext();
@@ -20,6 +20,24 @@ import reducer from "../component/reducer/reducer";
 //     )
 
 // }
+
+
+const loadContext = createContext();
+
+const LoadProvider = ({children}) => {
+    const [loading, setLoading] = useState(true);
+    const handleLoad = () => {
+        setLoading(false);
+
+    }
+    const value = {loading, handleLoad}
+    return (
+        <loadContext.Provider value={value}>
+            {children}
+        </loadContext.Provider>
+    )
+}
+export {loadContext, LoadProvider}
 
 // ALL TASKS CONTEXT
 const ListContext = createContext();

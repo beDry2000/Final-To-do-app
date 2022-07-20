@@ -28,49 +28,50 @@ function ListMenu() {
 
 
   return (
-    
-      <div>
-        <IconButton
-          id="basic-button"
-          aria-controls={open ? "basci-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          <MoreHorizIcon size="large" />
-        </IconButton>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button'
-          }}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-        >
-          {
-            options.map((option, index) => (
-                <MenuItem
-                  key={option}
-                  selected={option === state.filtered}
-                  onClick={e => handleKeepSelected(e, index)}
-                >
-                  {option}
 
-                </MenuItem>
-        
-            ))
-          }
-        </Menu>
-      </div>
+    <div>
+      <IconButton
+        sx={{ ml: 2 }}
+        id="basic-button"
+        aria-controls={open ? "basci-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        <MoreHorizIcon size="large" />
+      </IconButton>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button'
+        }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        {
+          options.map((option, index) => (
+            <MenuItem
+              key={option}
+              selected={option === state.filtered}
+              onClick={e => handleKeepSelected(e, index)}
+            >
+              {option}
+
+            </MenuItem>
+
+          ))
+        }
+      </Menu>
+    </div>
   )
 }
 

@@ -14,8 +14,8 @@ const Done = () => {
                     .map((todo, index) => (
                         <div key={index}>
 
-                            <input class="inp-cbx" id={todo.name} type="checkbox" style={{ display: "none" }} checked/>
-                            <label class="cbx" htmlFor={todo.name}><span>
+                            <input className="inp-cbx" id={todo.name} type="checkbox" style={{ display: "none" }} checked/>
+                            <label className="cbx" htmlFor={todo.name}><span>
                                 <svg width="12px" height="9px" >
                                     <polyline points="1 5 4 8 11 1"></polyline>
                                 </svg></span><span>{todo.name}</span></label>

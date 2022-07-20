@@ -49,13 +49,11 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-
+  display: flex;
 }
 
-.cbx span:last-child {
-  min-width: 90%;
-  overflow-wrap: break-word;
-}
+
+
 
 
 .cbx span {
@@ -64,9 +62,13 @@
   transform: translate3d(0, 0, 0);
 }
 
+/* .cbx span:last-child {
+  margin-top: -2px;
+} */
+
 .cbx span:first-child {
   position: relative;
-  width: 24px;
+  min-width: 24px;
   height: 24px;
   border-radius: 50%;
   transform: scale(1);
