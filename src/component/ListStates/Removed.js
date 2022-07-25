@@ -5,17 +5,19 @@ const Removed = () => {
 
     const [state] = useListContext();
     const { todos } = state;
-    return (
-        <div id="list-removed-jobs" className='flex flex-col gap-4'>
-            {
-                todos
-                    .filter(({ removed }) => removed)
-                    .map((todo, index) => (
-                        <div key={index} className='my-auto text-[#333] line-through'>
-                            <label htmlFor={todo.name}>{todo.name}</label>
+    const removedArr = todos.filter(({ removed }) => removed);
 
-                        </div>
-                    ))
+    return (
+        <div className='flex flex-col gap-4 h-full overflow-auto'>
+            {
+                removedArr.length === 0 ?
+                    <p className='text-center mt-[10%]'>There aren't any deleted tasks yet!</p>
+                    : removedArr.map((todo, index) => (
+                            <div key={index} className='text-[#333] line-through px-6 my-1 pb-2'>
+                                <label htmlFor={todo.name}>{todo.name}</label>
+
+                            </div>
+                        ))
             }
         </div>
     )

@@ -1,11 +1,11 @@
-import { SET_JOB, ADD_JOB, DEL_JOB, FIL_JOB, CHECK_JOB, FETCH_JOB } from "./constants";
+import { SET_JOB, ADD_JOB, DEL_JOB, FIL_JOB, CHECK_JOB, FETCH_JOB, EDIT_JOB } from "./constants";
 
 
 const reducer = (state, action) => {
 
     const { todos } = state;
     switch (action.type) {
-        case FETCH_JOB: 
+        case FETCH_JOB:
             return {
                 ...state,
                 todos: action.payload
@@ -23,6 +23,21 @@ const reducer = (state, action) => {
             }
             todos.push(newJob);
             return state;
+        case EDIT_JOB:
+            const editedList = todos.map(todo => {
+                if (todo.id === action.id) {
+                    console.log('editedList Name', action.input)
+                     todo.name = action.input;
+                }
+                return todo;
+
+            })
+            console.log('editedList', action.id)
+           
+            return {
+                ...state,
+                todos: editedList
+            }
         case DEL_JOB:
             const deletedTodos = todos.map(todo => {
                 if (todo.id === action.payload) {

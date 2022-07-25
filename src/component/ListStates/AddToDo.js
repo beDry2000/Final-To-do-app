@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import useListContext from '../../context/hooks';
 import { setJob, addJob } from '../reducer/actions';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -29,10 +31,13 @@ const AddToDo = () => {
             dispatch(addJob(todoInput));
             dispatch(setJob(''));
         }
+        setHideInput(true);
     }
+    // const isSmallScreen = useMediaQuery();
+    const isMediumScreen = useMediaQuery('(min-width:1024px)');
 
     return (
-        <div className='mt-4 flex items-end gap-4 min-h-20 px-6 mt-1 mb-5'>
+        <div className='mt-4 flex items-end gap-4 min-h-20 px-6 pb-4'>
             <svg
                 className='cursor-pointer'
                 width="26" height="26" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -42,15 +47,15 @@ const AddToDo = () => {
                 <rect x="5.60001" y="3.2" width="0.8" height="5.6" rx="0.4" fill="#3c53c7" />
                 <rect x="3.19998" y="6.39999" width="0.8" height="5.6" rx="0.4" transform="rotate(-90 3.19998 6.39999)" fill="#3c53c7" />
             </svg>
+
             {hideInput
-                ? <div className='inline-block' onClick={handleInput}>Create New Item</div>
+                ? <div onClick={handleInput}>Create New Item</div>
                 : (
                     <>
                         <Box
-
                             component="form"
                             sx={{
-                                '& > :not(style)': { width: '40ch' },
+                                '& > :not(style)': { width: isMediumScreen? '40ch': '20ch' },
                             }}
                             noValidate
                             autoComplete="off"

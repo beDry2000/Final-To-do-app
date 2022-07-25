@@ -1,4 +1,4 @@
-import { FETCH_JOB, SET_JOB, ADD_JOB, DEL_JOB, FIL_JOB, CHECK_JOB } from './constants';
+import { FETCH_JOB, SET_JOB, ADD_JOB, DEL_JOB,EDIT_JOB, FIL_JOB, CHECK_JOB } from './constants';
 
 const fetchJob = payload => ({
     type: FETCH_JOB,
@@ -7,6 +7,12 @@ const fetchJob = payload => ({
 const setJob = payload => ({
     type: SET_JOB,
     payload
+})
+
+const editJob = ({id, input}) => ({
+    type: EDIT_JOB,
+    id,
+    input
 })
 
 const addJob = payload => ({
@@ -26,4 +32,4 @@ const filJob = payload => ({
     payload
 })
 
-export { fetchJob, setJob, addJob, delJob, filJob, checkJob };
+export { fetchJob, setJob, addJob, delJob, editJob, filJob, checkJob };

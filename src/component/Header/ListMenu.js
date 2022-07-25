@@ -3,12 +3,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { IconButton } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import useListContext from '../../context/hooks';
+import useListContext, { useTheme } from '../../context/hooks';
 import { filJob } from '../reducer/actions';
 
 
 function ListMenu() {
-
+  const {light} = useTheme();
   const [state, dispatch] = useListContext();
   useEffect(() => {
     dispatch(filJob(options[0]));
@@ -31,7 +31,9 @@ function ListMenu() {
 
     <div>
       <IconButton
-        sx={{ ml: 2 }}
+        sx={{ ml: 2, 
+        color: light ? '' : '#fff'
+        }}
         id="basic-button"
         aria-controls={open ? "basci-menu" : undefined}
         aria-haspopup="true"

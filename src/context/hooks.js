@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ListContext } from "./ContextsProvider";
+import { ThemeContext } from "./theme";
 
 import { loadContext } from "./ContextsProvider";
 
@@ -8,3 +9,6 @@ export default useListContext;
 
 const useLoad = () => useContext(loadContext);
 export {useLoad};
+
+const useTheme = () => useContext(ThemeContext);
+export {useTheme};
